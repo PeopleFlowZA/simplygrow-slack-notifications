@@ -9,6 +9,7 @@ async function main() {
     headers: { "Content-Type": "application/json" },
   };
   let tagName = github.context.ref;
+  console.log(`Attempting to notify Slack for github context: '${tagName}'`);
   if (!tagName.startsWith("/refs/tags/")) {
     const msg = "This action is designed to be used for releases ... skipping";
     console.error(msg);
