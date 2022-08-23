@@ -14621,7 +14621,7 @@ const axios = (__nccwpck_require__(6545)["default"]);
 async function main() {
   const incomingWebHookURL = core.getInput("incoming-webhook-url");
   let releaseNotes = core.getInput("content-body");
-  releaseNotes = releaseNotes.replace("\\\\", "\\");
+  releaseNotes = releaseNotes.replace("\\\\r", "\\r").replace("\\\\n", "\\n");
   const cfg = {
     headers: { "Content-Type": "application/json" },
   };
