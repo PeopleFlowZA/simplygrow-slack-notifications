@@ -14644,7 +14644,7 @@ async function main() {
         type: "header",
         text: {
           type: "mrkdwn",
-          text: `\`${repositoryName}\`: \`${tagName}\``,
+          text: "`" + repositoryName + "`: `" + tagName + "`",
         },
       },
       {
@@ -14658,10 +14658,7 @@ async function main() {
         type: "section",
         text: {
           type: "mrkdwn",
-          text: `\`\`\`
-		 ${releaseNotes}
-		  \`\`\`
-		  `,
+          text: "``\n" + releaseNotes + "\n```",
         },
       },
     ],
