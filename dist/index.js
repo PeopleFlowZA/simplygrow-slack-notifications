@@ -14643,7 +14643,7 @@ async function main() {
       {
         type: "header",
         text: {
-          type: "plain_text",
+          type: "mrkdwn",
           text: `\`${repositoryName}\`: \`${tagName}\``,
         },
       },
