@@ -22,13 +22,13 @@ async function main() {
   const author = github.context.actor;
 
   const requestBody = {
-    text: "Production Deployment",
+    text: `Production Deployment: ${repositoryName}`,
     blocks: [
       {
         type: "header",
         text: {
           type: "mrkdwn",
-          text: "`" + repositoryName + "`: `" + tagName + "`",
+          text: "`" + tagName + "`",
         },
       },
       {
@@ -42,7 +42,7 @@ async function main() {
         type: "section",
         text: {
           type: "mrkdwn",
-          text: "``\n" + releaseNotes + "\n```",
+          text: "```\n" + releaseNotes + "\n```",
         },
       },
     ],
