@@ -10,6 +10,7 @@ async function main() {
     headers: { "Content-Type": "application/json" },
   };
   let tagName = github.context.ref;
+  let reponame = github.context.repo.repo;
 
   if (!tagName.startsWith("refs/tags/")) {
     const msg = "This action is designed to be used for releases ... skipping";
@@ -29,14 +30,14 @@ async function main() {
         type: "header",
         text: {
           type: "plain_text",
-          text: tagName,
+          text: reponame,
         },
       },
       {
         type: "section",
         text: {
           type: "mrkdwn",
-          text: `Author: ${author}`,
+          text: `Author: ${author}\nVersion: ${tagName}`,
         },
       },
       {
