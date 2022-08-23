@@ -14620,7 +14620,8 @@ const axios = (__nccwpck_require__(6545)["default"]);
 
 async function main() {
   const incomingWebHookURL = core.getInput("incoming-webhook-url");
-  const releaseNotes = core.getInput("content-body");
+  let releaseNotes = core.getInput("content-body");
+  releaseNotes = releaseNotes.replace("\\\\", "\\");
   const cfg = {
     headers: { "Content-Type": "application/json" },
   };
@@ -14643,8 +14644,8 @@ async function main() {
       {
         type: "header",
         text: {
-          type: "mrkdwn",
-          text: "`" + tagName + "`",
+          type: "plain_text",
+          text: tagName,
         },
       },
       {
