@@ -4,6 +4,9 @@ inputs:
   incoming-webhook-url:
     description: 'The incoming webhook URL for the slack organisation'
     required: true
+  content-body:
+    description: 'The content of the release notes that must enter the Slack message'
+    required: true
 runs:
   using: 'node16'
   main: 'index.js'
