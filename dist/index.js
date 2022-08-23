@@ -14621,11 +14621,13 @@ const axios = (__nccwpck_require__(6545)["default"]);
 async function main() {
   const incomingWebHookURL = core.getInput("incoming-webhook-url");
   let releaseNotes = core.getInput("content-body");
+  console.log(releaseNotes);
   releaseNotes = releaseNotes.replace("\\\\r", "\\r").replace("\\\\n", "\\n");
   const cfg = {
     headers: { "Content-Type": "application/json" },
   };
   let tagName = github.context.ref;
+  let reponame = github.context.repo.repo;
 
   if (!tagName.startsWith("refs/tags/")) {
     const msg = "This action is designed to be used for releases ... skipping";
@@ -14645,14 +14647,14 @@ async function main() {
         type: "header",
         text: {
           type: "plain_text",
-          text: tagName,
+          text: reponame,
         },
       },
       {
         type: "section",
         text: {
           type: "mrkdwn",
-          text: `Author: ${author}`,
+          text: `Author: ${author}\nVersion: ${tagName}`,
         },
       },
       {

@@ -5,6 +5,7 @@ const axios = require("axios").default;
 async function main() {
   const incomingWebHookURL = core.getInput("incoming-webhook-url");
   let releaseNotes = core.getInput("content-body");
+  console.log(releaseNotes);
   releaseNotes = releaseNotes.replace("\\\\r", "\\r").replace("\\\\n", "\\n");
   const cfg = {
     headers: { "Content-Type": "application/json" },
